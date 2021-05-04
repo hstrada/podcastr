@@ -39,6 +39,7 @@ export function PlayerContextProvider({
   const [episodesList, setEpisodesList] = useState([]);
   const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLooping, setIsLooping] = useState(false);
 
   function play(episode: Episode) {
     setEpisodesList([episode]);
@@ -54,6 +55,10 @@ export function PlayerContextProvider({
 
   function togglePlay() {
     setIsPlaying(!isPlaying);
+  }
+
+  function toggleLoop() {
+    setIsLooping(!isLooping);
   }
 
   function setPlayingState(state: boolean) {
@@ -85,6 +90,8 @@ export function PlayerContextProvider({
         playPrevious,
         hasPrevious,
         hasNext,
+        toggleLoop,
+        isLooping,
       }}
     >
       {children}
